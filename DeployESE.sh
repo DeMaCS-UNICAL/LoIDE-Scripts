@@ -1,11 +1,6 @@
 #!/bin/bash
 
-#CONFIG_PATH_ESE is the path to the configuration folder of the ESE.
-#LOGS_PATH_ESE is the path to the log file of the ESE.
-BASE_PATH=""
-CONFIG_PATH_ESE="$BASE_PATH/ese/config_files"
-EXECUTABLES_PATH_ESE="$BASE_PATH/ese/executables"
-LOGS_PATH_ESE="$BASE_PATH/ese/logs/ese.log"
+. Constants.env
 
 # Write the current date and time to the log files
 echo "" >> $LOGS_PATH_ESE
