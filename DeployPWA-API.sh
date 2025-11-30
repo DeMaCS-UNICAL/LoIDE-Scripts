@@ -1,15 +1,6 @@
 #!/bin/bash
 
-# CONFIG_PATH_API and CONFIG_PATH_PWA are the paths to the configuration folders of the API and PWA, respectively.
-# LOGS_PATH_API and LOGS_PATH_PWA are the paths to the log files of the API and PWA, respectively.
-# API_SERVER is the IP address of the API server.
-BASE_PATH=""
-CONFIG_PATH_API="$BASE_PATH/api/config"
-LOGS_PATH_API="$BASE_PATH/api/logs/api.log"
-CONFIG_SERVER_PATH_PWA="$BASE_PATH/pwa/config/server"
-CONFIG_SSL_PATH_PWA="$BASE_PATH/pwa/config/ssl"
-LOGS_PATH_PWA="$BASE_PATH/pwa/logs/pwa.log"
-API_SERVER=""
+. Constants.env
 
 # Write the current date and time to the log files
 echo "" >> $LOGS_PATH_API
