@@ -3,7 +3,7 @@ This repository contains a collection of shell scripts to automate the deploymen
 
 ## Deployment Scripts
 The following scripts orchestrate the initialization of the LoIDE components. Each script automatically pulls the latest Docker images, mounts the required configuration files, and directs container output to designated log files. 
-**Important:** These scripts require configuration constants that must be manually configured in `Constants.env` prior to execution.
+**Important:** These scripts require configuration constants that must be manually configured in `Constants.env` prior to execution. If this file is not in the folder containing the scripts, an error will occur.
 
 ### DeployESE.sh
 This script automates the deployment of [PythonESE](https://github.com/DeMaCS-UNICAL/PythonESE).
