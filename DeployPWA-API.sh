@@ -1,6 +1,14 @@
 #!/bin/bash
 
-. Constants.env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONSTANTS_FILE="$SCRIPT_DIR/Constants.env"
+
+if [[ ! -f "$CONSTANTS_FILE" ]]; then
+    echo "Error: Constants file not found at $CONSTANTS_FILE" >&2
+    exit 1
+fi
+
+. "$CONSTANTS_FILE"
 
 # Write the current date and time to the log files
 echo "" >> $LOGS_PATH_API
