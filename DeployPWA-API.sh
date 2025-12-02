@@ -46,4 +46,4 @@ if [[ -n "$(docker ps -a -q -f name=^/pwa$)" ]]; then
 fi
 
 echo "Starting a new PWA container."
-nohup docker run --network host --env REACT_APP_LOIDE_API_SERVER=$API_SERVER --mount type=bind,source=$CONFIG_SERVER_PATH_PWA,target=/app/config/server,ro --mount type=bind,source=$CONFIG_SSL_PATH_PWA,target=/app/config/ssl,ro --restart=always --name pwa loideunical/loide:pwa >> $LOGS_PATH_PWA 2>&1 &
+nohup docker run --network host --env VITE_LOIDE_API_SERVER=$API_SERVER --mount type=bind,source=$CONFIG_SERVER_PATH_PWA,target=/app/config/server,ro --mount type=bind,source=$CONFIG_SSL_PATH_PWA,target=/app/config/ssl,ro --restart=always --name pwa loideunical/loide:pwa >> $LOGS_PATH_PWA 2>&1 &
