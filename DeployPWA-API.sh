@@ -17,7 +17,7 @@ echo "$(date '+%D %T')" >> $LOGS_PATH_API
 echo "$(date '+%D %T')" >> $LOGS_PATH_PWA
 
 # Pull and run the latest version of the API
-docker pull loideunical/loide:api  | head -n 3
+docker pull loideunical/loide:api  
 
 # Remove existing API container if present
 if [[ -n "$(docker ps -a -q -f name=^/api$)" ]]; then
@@ -33,7 +33,7 @@ echo "Starting a new API container."
 nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_API,target=/app/config,ro --restart=always --name api loideunical/loide:api >> $LOGS_PATH_API 2>&1 &
 
 # Pull and run the latest version of the PWA
-docker pull loideunical/loide:pwa  | head -n 3
+docker pull loideunical/loide:pwa  
 
 # Remove existing PWA container if present
 if [[ -n "$(docker ps -a -q -f name=^/pwa$)" ]]; then

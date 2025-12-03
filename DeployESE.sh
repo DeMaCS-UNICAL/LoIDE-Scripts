@@ -15,7 +15,7 @@ echo "" >> $LOGS_PATH_ESE
 echo "$(date '+%D %T')" >> $LOGS_PATH_ESE
 
 # Pull and run the latest version of the ESE
-docker pull loideunical/loide:ese | head -n 3
+docker pull loideunical/loide:ese 
 
 # Remove existing ESE container if present
 if [[ -n "$(docker ps -a -q -f name=^/ese$)" ]]; then
