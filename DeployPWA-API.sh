@@ -30,7 +30,7 @@ if [[ -n "$(docker ps -a -q -f name=^/api$)" ]]; then
 fi
 
 echo "Starting a new API container."
-nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_API,target=/app/config,ro --restart=always --name api loideunical/loide:api >> $LOGS_PATH_API 2>&1 &
+nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_API,target=/app/config,ro --mount type=bind,source=$CONFIG_SSL_PATH_API,target=/app/config/ssl,ro --restart=always --name api loideunical/loide:api >> $LOGS_PATH_API 2>&1 &
 
 # Pull and run the latest version of the PWA
 docker pull loideunical/loide:pwa  
