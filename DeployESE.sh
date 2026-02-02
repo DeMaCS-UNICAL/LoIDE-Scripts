@@ -15,7 +15,7 @@ echo "" >> $LOGS_PATH_ESE
 echo "$(date '+%D %T')" >> $LOGS_PATH_ESE
 
 # Pull and run the latest version of the ESE
-docker pull loideunical/loide:ese 
+docker pull loideunical/loide-ese 
 
 # Remove existing ESE container if present
 if [[ -n "$(docker ps -a -q -f name=^/ese$)" ]]; then
@@ -28,4 +28,4 @@ if [[ -n "$(docker ps -a -q -f name=^/ese$)" ]]; then
 fi
 
 echo "Starting a new ESE container."
-nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_ESE,target=/config_files,ro --mount type=bind,source=$EXECUTABLES_PATH_ESE,target=/executables,ro --privileged=true --restart=always -e PYTHONUNBUFFERED=1 --name ese loideunical/loide:ese >> $LOGS_PATH_ESE 2>&1 &
+nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_ESE,target=/config_files,ro --mount type=bind,source=$EXECUTABLES_PATH_ESE,target=/executables,ro --privileged=true --restart=always -e PYTHONUNBUFFERED=1 --name ese loideunical/loide-ese >> $LOGS_PATH_ESE 2>&1 &

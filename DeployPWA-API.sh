@@ -17,7 +17,7 @@ echo "$(date '+%D %T')" >> $LOGS_PATH_API
 echo "$(date '+%D %T')" >> $LOGS_PATH_PWA
 
 # Pull and run the latest version of the API
-docker pull loideunical/loide:api  
+docker pull loideunical/loide-api  
 
 # Remove existing API container if present
 if [[ -n "$(docker ps -a -q -f name=^/api$)" ]]; then
@@ -30,10 +30,10 @@ if [[ -n "$(docker ps -a -q -f name=^/api$)" ]]; then
 fi
 
 echo "Starting a new API container."
-nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_API,target=/app/config,ro --mount type=bind,source=$CONFIG_SSL_PATH_API,target=/app/config/ssl,ro --restart=always --name api loideunical/loide:api >> $LOGS_PATH_API 2>&1 &
+nohup docker run --network host --mount type=bind,source=$CONFIG_PATH_API,target=/app/config,ro --mount type=bind,source=$CONFIG_SSL_PATH_API,target=/app/config/ssl,ro --restart=always --name api loideunical/loide-api >> $LOGS_PATH_API 2>&1 &
 
 # Pull and run the latest version of the PWA
-docker pull loideunical/loide:pwa  
+docker pull loideunical/loide-pwa  
 
 # Remove existing PWA container if present
 if [[ -n "$(docker ps -a -q -f name=^/pwa$)" ]]; then
@@ -46,4 +46,4 @@ if [[ -n "$(docker ps -a -q -f name=^/pwa$)" ]]; then
 fi
 
 echo "Starting a new PWA container."
-nohup docker run --network host --env VITE_LOIDE_API_SERVER=$API_SERVER --mount type=bind,source=$CONFIG_SERVER_PATH_PWA,target=/app/config/server,ro --mount type=bind,source=$CONFIG_SSL_PATH_PWA,target=/app/config/ssl,ro --restart=always --name pwa loideunical/loide:pwa >> $LOGS_PATH_PWA 2>&1 &
+nohup docker run --network host --env VITE_LOIDE_API_SERVER=$API_SERVER --mount type=bind,source=$CONFIG_SERVER_PATH_PWA,target=/app/config/server,ro --mount type=bind,source=$CONFIG_SSL_PATH_PWA,target=/app/config/ssl,ro --restart=always --name pwa loideunical/loide-pwa >> $LOGS_PATH_PWA 2>&1 &
